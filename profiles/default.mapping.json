@@ -1,0 +1,21 @@
+{
+  "id": "default-profile",
+  "name": "Domyślny profil mapowania",
+  "isDefault": true,
+  "mapping": {
+    "orderNo": "Numer zlecenia",
+    "resource": "Maszyna",
+    "startTime": "Data rozpoczęcia",
+    "endTime": "Data zakończenia",
+    "opNo": "Nr operacji",
+    "partNo": "Nr partii",
+  "productName": "Product",
+    "qty": "Ilość",
+    "notes": "Uwagi"
+  },
+  "transformations": {
+    "\\s+": " ",
+    "^\\s+|\\s+$": ""
+  },
+  "createdAt": "2025-01-15T10:00:00.000Z"
+}

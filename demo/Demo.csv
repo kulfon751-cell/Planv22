@@ -1,0 +1,16 @@
+Numer zlecenia,Nr operacji,Nr partii,Maszyna,Data rozpoczęcia,Data zakończenia,Ilość,Uwagi
+ZL-2025-001,10,P001-A,Maszyna-A1,15.01.2025 08:00,15.01.2025 12:00,50,Operacja toczenia
+ZL-2025-001,20,P001-A,Maszyna-B2,15.01.2025 13:00,15.01.2025 17:00,50,Operacja frezowania
+ZL-2025-001,30,P001-A,Centrum-CNC-01,16.01.2025 08:00,16.01.2025 11:00,50,Operacja wykańczająca
+ZL-2025-002,10,P002-B,Maszyna-A2,15.01.2025 09:00,15.01.2025 14:00,75,Operacja wstępna
+ZL-2025-002,20,P002-B,Maszyna-C1,15.01.2025 15:00,15.01.2025 18:00,75,Operacja główna
+ZL-2025-002,30,P002-B,Centrum-CNC-02,16.01.2025 09:00,16.01.2025 13:00,75,Kontrola jakości
+ZL-2025-003,10,P003-C,Maszyna-B1,15.01.2025 10:00,15.01.2025 15:00,30,Operacja specjalna
+ZL-2025-003,20,P003-C,Maszyna-A1,15.01.2025 16:00,15.01.2025 19:00,30,Operacja dodatkowa
+ZL-2025-004,10,P004-D,Centrum-CNC-01,16.01.2025 12:00,16.01.2025 16:00,100,Operacja automatyczna
+ZL-2025-004,20,P004-D,Maszyna-C1,16.01.2025 17:00,16.01.2025 20:00,100,Operacja końcowa
+ZL-2025-005,10,P005-E,Maszyna-B2,16.01.2025 08:00,16.01.2025 12:00,25,Operacja testowa
+ZL-2025-005,20,P005-E,Maszyna-A2,16.01.2025 14:00,16.01.2025 17:00,25,Operacja finalna
+ZL-2025-006,10,P006-F,Maszyna-A1,17.01.2025 08:00,17.01.2025 11:00,60,Operacja pilotażowa
+ZL-2025-007,10,P007-G,Maszyna-B1,17.01.2025 09:00,17.01.2025 13:00,40,Operacja standardowa
+ZL-2025-008,10,P008-H,Centrum-CNC-02,17.01.2025 14:00,17.01.2025 18:00,80,Operacja precyzyjna

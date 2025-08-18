@@ -1,0 +1,101 @@
+// Prisma schema for server mode
+// DB: PostgreSQL in server, SQLite fallback for portable
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Resource {
+  id          String   @id @default(cuid())
+  name        String
+  group       String?
+  department  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  operations  Operation[]
+
+  @@index([name])
+}
+
+model Order {
+  orderNo    String   @id
+  createdAt  DateTime @default(now())
+  operations Operation[]
+}
+
+model Operation {
+  id            String   @id @default(cuid())
+  orderNo       String
+  opNo          String?
+  partNo        String?
+  resourceId    String
+  startTs       DateTime
+  endTs         DateTime
+  qty           Int?
+  sequence      Int?
+  actualStartTs DateTime?
+  actualEndTs   DateTime?
+  blocked       Json?
+  version       Int      @default(1)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  order    Order    @relation(fields: [orderNo], references: [orderNo])
+  resource Resource @relation(fields: [resourceId], references: [id])
+
+  @@index([orderNo])
+  @@index([resourceId, startTs])
+}
+
+model Import {
+  id               String   @id @default(cuid())
+  userId           String?
+  source           String?
+  filename         String?
+  mappingProfileId String?
+  rowsOk           Int      @default(0)
+  rowsSkipped      Int      @default(0)
+  createdAt        DateTime @default(now())
+}
+
+model MappingProfile {
+  id          String   @id @default(cuid())
+  name        String
+  headersHash String?
+  json        Json
+  createdBy   String?
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  atTs      DateTime @default(now())
+  userId    String?
+  role      String?
+  action    String
+  entity    String
+  entityId  String
+  before    Json?
+  after     Json?
+  ip        String?
+  userAgent String?
+  txnId     String?
+
+  @@index([atTs])
+}
+
+model Backup {
+  id          String   @id @default(cuid())
+  startedAt   DateTime @default(now())
+  finishedAt  DateTime?
+  status      String   @default("pending")
+  location    String?
+  sizeBytes   Int?
+  note        String?
+  startedBy   String?
+}

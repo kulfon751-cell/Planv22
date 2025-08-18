@@ -1,0 +1,81 @@
+{
+  "name": "plan-produkcji-electron",
+  "version": "1.0.1",
+  "description": "Plan Produkcji - Portable Desktop Application",
+  "main": "main.js",
+  "author": "Myszoniz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Myszoniz/Planv22"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:portable": "npm run icon:gen && electron-builder --win portable --x64",
+    "build:nsis": "npm run icon:gen && electron-builder --win nsis --x64",
+    "build:win": "npm run icon:gen && electron-builder --win --x64",
+    "icon:gen": "node ./scripts/gen-icon.mjs"
+  },
+  "build": {
+    "appId": "com.planprodukcji.app",
+    "productName": "Plan Produkcji",
+    "directories": {
+      "output": "../dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "icon.ico"
+    ],
+    "extraResources": [
+      {
+        "from": "../.next",
+        "to": ".next"
+      },
+      {
+        "from": "../public",
+        "to": "public"
+      },
+      {
+        "from": "../demo",
+        "to": "demo"
+      },
+      {
+        "from": "../profiles",
+        "to": "profiles"
+      },
+      {
+        "from": "../package.json",
+        "to": "package.json"
+      }
+    ],
+  "icon": "icon.ico",
+  "win": {
+      "target": ["portable", "nsis"],
+      "requestedExecutionLevel": "asInvoker",
+      "forceCodeSigning": false,
+      "legalTrademarks": "",
+      "fileAssociations": [],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "PlanProdukcji-Portable.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "PlanProdukcji-Setup.exe",
+      "displayLanguageSelector": false,
+      "installerLanguages": ["pl_PL", "en_US"]
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1",
+    "png-to-ico": "^2.1.8",
+    "sharp": "^0.33.5"
+  }
+}
